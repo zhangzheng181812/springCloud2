@@ -1,0 +1,17 @@
+server:
+  port: 35002
+
+eureka:
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}@${spring.cloud.client.ip-address}:${server.port}
+  client:
+    #是否要注册到其他Server上
+    registerWithEureka: true
+    #是否拉取其他节点的服务信息
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:35001/eureka/
+spring:
+  application:
+    name: eureka-server
